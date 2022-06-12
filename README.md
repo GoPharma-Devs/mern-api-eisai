@@ -44,7 +44,7 @@ npm start
 [MIT](https://choosealicense.com/licenses/mit/)
 Licencia MIT
 
-Copyright (c) [año] [ Carlos Boyzo Oregon]
+Copyright (c) [2022] [ Carlos Boyzo Oregon]
 
 Por la presente se concede permiso, sin cargo, a cualquier persona que obtenga una copia
 de este software y los archivos de documentación asociados (el "Software"), para tratar
