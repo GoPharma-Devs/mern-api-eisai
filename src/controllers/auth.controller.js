@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const { config } = require('../config/index');
 const Role = require('../models/role');
 
+// Register
 exports.signUp = async (req, res) => {
   const { firstname, lastname, username, email, password, rooms, roles } =
     req.body;
@@ -34,6 +35,7 @@ exports.signUp = async (req, res) => {
   res.status(200).json({ newToken });
 };
 
+// Login
 exports.logIn = async (req, res) => {
   const userExist = await User.findOne({ email: req.body.email }).populate(
     'roles'
