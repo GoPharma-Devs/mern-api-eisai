@@ -2,25 +2,25 @@ const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const { config } = require('../config/index');
 const Role = require('../models/role');
-
+const sendConfirmation = require('../utils/sendConfirmation');
 // Register
 exports.signUp = async (req, res) => {
-  const { firstname, lastname, username, email, password, rooms, roles } =
-    req.body;
+  const { firstname, lastname, username, email, password, roles } = req.body;
   const newUser = new User({
     firstname,
     lastname,
     username,
     email,
     password: await User.encryptPassword(password),
-    rooms,
   });
+  // Check if user exist
   let user = await User.findOne({ email: req.body.email });
   if (user) {
-    return res
-      .status(409)
-      .send({ message: 'User with given email already Exist!' });
+    return res.status(409).send({
+      message: '¡El usuario con el correo electrónico ingresado ya existe!',
+    });
   }
+  //detectar rol del usuario
   if (roles) {
     const foundRoles = await Role.find({ name: { $in: roles } });
     newUser.roles = foundRoles.map((role) => role._id);
@@ -28,11 +28,15 @@ exports.signUp = async (req, res) => {
     const role = await Role.findOne({ name: 'user' });
     newUser.roles = [role._id];
   }
+  // Save user
   const savedUser = await newUser.save();
+  // Create token for user and send it back to client
   const newToken = jwt.sign({ id: savedUser._id }, config.SECRET, {
     expiresIn: 86400,
   });
   res.status(200).json({ newToken });
+  // Send email
+ 
 };
 
 // Login

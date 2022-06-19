@@ -14,7 +14,7 @@ exports.transporter = async (req, res) => {
   const contactSaved = await newContact.save();
 
   contentHTML = `
-        <h1>Form Info</h1>
+        <h1>Mensaje de contacto</h1>
         <ul>
             <li>Nombre: ${firstname}</li>
             <li>Apellido: ${lastname}</li>

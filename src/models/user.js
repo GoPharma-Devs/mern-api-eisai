@@ -33,6 +33,10 @@ const userSchema = new Schema(
         type: Schema.Types.ObjectId,
       },
     ],
+    verified: {
+      type: Boolean,
+      default: false,
+    }
   },
   {
     timestamps: true,

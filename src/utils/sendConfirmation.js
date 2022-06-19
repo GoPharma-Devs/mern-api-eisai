@@ -1,8 +1,8 @@
 const nodemailer = require('nodemailer');
-
+const { config } = require('../config/index');
 module.exports = async (email, subject, text) => {
   try {
-    const transporter = nodemailer.createTransport({
+    let transporter = nodemailer.createTransport({
       host: 'smtpout.secureserver.net',
       port: 465,
       secure: true,

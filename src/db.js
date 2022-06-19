@@ -12,7 +12,7 @@ const DB_URI = `mongodb+srv://${dbUser}:${dbPassword}@crbz-cluster.dixfy.mongodb
     const db = await mongoose.connect(DB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      useCreateIndex: true,
+      // useCreateIndex: true,
     });
 
     console.log('Database Connected', db.connection.host.cyan.bold);
