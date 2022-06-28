@@ -5,7 +5,7 @@ const dbName = config.DB_NAME;
 const dbUser = config.DB_USER;
 const dbPassword = config.DB_PASSWORD;
 
-const DB_URI = `mongodb+srv://${dbUser}:${dbPassword}@crbz-cluster.dixfy.mongodb.net/${dbName}?retryWrites=true&w=majority`;
+const DB_URI = `mongodb+srv://${dbUser}:${dbPassword}@gp-mongo.30zjx.mongodb.net/${dbName}?retryWrites=true&w=majority`;
 
 (async () => {
   try {

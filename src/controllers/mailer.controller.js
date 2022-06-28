@@ -3,9 +3,9 @@ const { config } = require('../config/index');
 const Contact = require('../models/contact');
 
 exports.transporter = async (req, res) => {
-  const { firstname, lastname, email, phone, message } = req.body;
+  const { name, lastname, email, phone, message } = req.body;
   const newContact = new Contact({
-    firstname,
+    name,
     lastname,
     email,
     phone,
@@ -14,20 +14,22 @@ exports.transporter = async (req, res) => {
   const contactSaved = await newContact.save();
 
   contentHTML = `
-        <h1>Mensaje de contacto</h1>
+        <h1>Mensaje de contacto desde mktandmedia.com</h1>
         <ul>
-            <li>Nombre: ${firstname}</li>
-            <li>Apellido: ${lastname}</li>
+            <li>Nombre: ${name}</li>
             <li>Email: ${email}</li>
             <li>Teléfono: ${phone}</li>
             <li>Mensaje: ${message}</li>
         </ul>
     `;
 
-  let transporter = nodemailer.createTransport({
-    host: 'smtpout.secureserver.net',
-    port: 465,
-    secure: true,
+  var transporter = nodemailer.createTransport({
+    host: 'smtp-mail.outlook.com', // hostname
+    secureConnection: false, // TLS requires secureConnection to be false
+    port: 587, // port for secure SMTP
+    tls: {
+      ciphers: 'SSLv3',
+    },
     auth: {
       user: config.MAILER_USER,
       pass: config.MAILER_PASS,
@@ -37,7 +39,7 @@ exports.transporter = async (req, res) => {
   let info = await transporter.sendMail({
     from: config.MAILER_USER,
     to: config.MAILER_USER,
-    subject: req.body.subject,
+    subject: "Mensaje de contacto desde mktandmedia.com",
     html: contentHTML,
   });
 

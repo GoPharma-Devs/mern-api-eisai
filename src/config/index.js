@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const config = {
   DEV: process.env.NODE_ENV !== 'production',
-  PORT: process.env.PORT || 3000,
+  PORT: process.env.PORT || 9000,
   SECRET: process.env.AUTH_JWT_SECRET || 'secret',
   CLIENT_URL: process.env.URL || 'http://localhost:3000',
   DB_NAME: process.env.DB_NAME,
