@@ -37,7 +37,7 @@ exports.transporter = async (req, res) => {
 
   let info = await transporter.sendMail({
     from: config.MAILER_USER,
-    to: "armandoboyzo@go-pharma.mx",
+    to: "armandoboyzo@go-pharma.mx,xochitl_gomez@eisai.com",
     subject: "Mensaje de contacto desde Rueda de prensa HHC",
     html: contentHTML,
   });
