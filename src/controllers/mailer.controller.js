@@ -14,7 +14,7 @@ exports.transporter = async (req, res) => {
   const contactSaved = await newContact.save();
 
   contentHTML = `
-        <h1>Mensaje de contacto desde mktandmedia.com</h1>
+        <h1>Mensaje de contacto desde Rueda de prensa HHC</h1>
         <ul>
             <li>Nombre: ${name}</li>
             <li>Email: ${email}</li>
@@ -38,8 +38,8 @@ exports.transporter = async (req, res) => {
 
   let info = await transporter.sendMail({
     from: config.MAILER_USER,
-    to: config.MAILER_USER,
-    subject: "Mensaje de contacto desde mktandmedia.com",
+    to: "armandoboyzo@go-pharma.mx",
+    subject: "Mensaje de contacto desde Rueda de prensa HHC",
     html: contentHTML,
   });
 
