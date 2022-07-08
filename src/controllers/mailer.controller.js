@@ -3,10 +3,9 @@ const { config } = require('../config/index');
 const Contact = require('../models/contact');
 
 exports.transporter = async (req, res) => {
-  const { name, lastname, email, phone, message } = req.body;
+  const { name,  email, phone, message } = req.body;
   const newContact = new Contact({
     name,
-    lastname,
     email,
     phone,
     message,
